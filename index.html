@@ -429,23 +429,130 @@
             color: #8B7355;
         }
 
-        .contact-item {
+        /* Map Container Styles */
+        .map-container {
+            position: relative;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(139, 115, 85, 0.2);
+            background: linear-gradient(135deg, #E8A87C, #D4A574);
+            margin-bottom: 2rem;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(232, 168, 124, 0.3);
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(139, 115, 85, 0.1);
+        }
+
+        .map-overlay h4 {
+            color: #8B7355;
+            margin-bottom: 5px;
             display: flex;
             align-items: center;
+            gap: 8px;
+            font-size: 1.1rem;
+        }
+
+        .map-overlay p {
+            color: #A68B5B;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Details Styles */
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
             margin-bottom: 1.5rem;
             gap: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #FAF8F5, #F4E6D8);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(139, 115, 85, 0.1);
         }
 
         .contact-item i {
             font-size: 1.5rem;
             color: #E8A87C;
-            width: 30px;
+            width: 25px;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
+        .contact-link {
+            color: #E8A87C;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #D4A574;
+            text-decoration: underline;
+        }
+
+        /* Directions Button */
+        .directions-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #E8A87C, #D4A574);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .directions-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(232, 168, 124, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        .directions-button i {
+            animation: bounce 2s infinite;
+        }
+
+        /* Social Links Improvements */
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 2rem;
+            justify-content: center;
         }
 
         .social-links a {
@@ -458,11 +565,87 @@
             color: white;
             border-radius: 50%;
             text-decoration: none;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .social-links a:hover::before {
+            left: 100%;
         }
 
         .social-links a:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 5px 15px rgba(232, 168, 124, 0.4);
+        }
+
+        /* Loading animation for map */
+        .map-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: linear-gradient(135deg, #F4E6D8, #E8D5C4);
+            color: #8B7355;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .map-loading i {
+            font-size: 2rem;
+            color: #E8A87C;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .map-container {
+                height: 250px;
+            }
+
+            .map-overlay {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                padding: 10px 15px;
+            }
+
+            .map-overlay h4 {
+                font-size: 1rem;
+            }
+
+            .map-overlay p {
+                font-size: 0.8rem;
+            }
+
+            .contact-item {
+                padding: 12px;
+            }
+
+            .contact-item i {
+                font-size: 1.3rem;
+            }
+
+            .directions-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
         }
 
         /* Footer */
@@ -663,6 +846,287 @@
                 font-size: 11px;
             }
         }
+
+        /* Image Carousel Styles */
+        .image-carousel {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(139, 115, 85, 0.2);
+            background: linear-gradient(135deg, #E8A87C, #D4A574);
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-slide:hover img {
+            transform: scale(1.05);
+        }
+
+        .slide-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 30px 20px 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-slide:hover .slide-overlay {
+            transform: translateY(0);
+        }
+
+        .slide-overlay h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .slide-overlay p {
+            font-size: 0.95rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        /* Carousel Controls */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #8B7355;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(232, 168, 124, 0.9);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn {
+            left: 15px;
+        }
+
+        .next-btn {
+            right: 15px;
+        }
+
+        /* Carousel Indicators */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .indicator.active {
+            background: #E8A87C;
+            border-color: white;
+            transform: scale(1.2);
+        }
+
+        .indicator:hover {
+            background: rgba(232, 168, 124, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Carousel Info */
+        .carousel-info {
+            padding: 20px;
+            background: linear-gradient(135deg, #FAF8F5, #F4E6D8);
+            border-radius: 15px;
+            margin-top: 15px;
+            border-left: 4px solid #E8A87C;
+        }
+
+        .carousel-info h4 {
+            color: #8B7355;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .carousel-info h4 i {
+            color: #E8A87C;
+            font-size: 1.2rem;
+        }
+
+        .carousel-info p {
+            color: #A68B5B;
+            line-height: 1.6;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Auto-play indicator */
+        .carousel-container::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(to right, #E8A87C, #D4A574);
+            animation: progressBar 5s linear infinite;
+            z-index: 5;
+        }
+
+        @keyframes progressBar {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* Loading state */
+        .carousel-slide.loading {
+            background: linear-gradient(135deg, #F4E6D8, #E8D5C4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .carousel-slide.loading::before {
+            content: '';
+            width: 40px;
+            height: 40px;
+            border: 3px solid #E8D5C4;
+            border-top: 3px solid #E8A87C;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .carousel-slide.loading::after {
+            content: 'Carregando imagem...';
+            color: #8B7355;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .carousel-container {
+                height: 280px;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .prev-btn {
+                left: 10px;
+            }
+
+            .next-btn {
+                right: 10px;
+            }
+
+            .slide-overlay {
+                padding: 20px 15px 15px;
+            }
+
+            .slide-overlay h4 {
+                font-size: 1.1rem;
+            }
+
+            .slide-overlay p {
+                font-size: 0.85rem;
+            }
+
+            .carousel-info {
+                padding: 15px;
+            }
+
+            .carousel-info h4 {
+                font-size: 1rem;
+            }
+
+            .carousel-info p {
+                font-size: 0.9rem;
+            }
+
+            .indicator {
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        /* Touch gestures for mobile */
+        @media (max-width: 768px) {
+            .carousel-container {
+                touch-action: pan-y;
+            }
+        }
+
+        /* Smooth transitions */
+        .carousel-slide img {
+            transition: all 0.3s ease;
+        }
+
+        .carousel-slide.loading img {
+            opacity: 0;
+        }
+
+        .carousel-slide:not(.loading) img {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -677,6 +1141,7 @@
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#servicos">Serviços</a></li>
                 <li><a href="#pacotes">Pacotes</a></li>
+                <li><a href="#agendamento">Agendamento</a></li>
                 <li><a href="#contato">Contato</a></li>
                 <li>
                     <a href="presente.html" class="gift-button">
@@ -710,7 +1175,7 @@
                     <p>Nosso convite é simples: permita-se um momento de autocuidado e descubra como é brilhar com autenticidade e confiança.</p>
                 </div>
                 <div class="about-image">
-                    <i class="fas fa-leaf"></i>
+                    <img src="https://i.pinimg.com/736x/ab/1a/e5/ab1ae57f1038d96cf8c5adea7050004e.jpg" alt="B-Beauty Glow - Ambiente da clínica">
                 </div>
             </div>
         </div>
@@ -825,9 +1290,9 @@
         </div>
     </section>
 
-    <section id="contato" class="contact">
+    <section id="agendamento" class="contact">
         <div class="container">
-            <h2 class="section-title">Agendamento e Contato</h2>
+            <h2 class="section-title">Agendamento</h2>
             <div class="contact-content">
                 <div class="contact-form">
                     <h3>Agende sua visita</h3>
@@ -864,35 +1329,87 @@
                 </div>
                 
                 <div class="contact-info">
-                    <h3>Entre em contato</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <strong>Telefone:</strong><br>
-                            (61) 3456-7801
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <strong>E-mail:</strong><br>
-                            clinica@bbeautyglow.com.br
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <strong>Endereço:</strong><br>
-                            ST. De Habitações Individuais Sul<br>
-                            Lago Sul, DF
-                        </div>
-                    </div>
+                    <h3>Tenha uma experiência incrivel</h3>                   
                     
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <!-- Carrossel de Imagens -->
+                            <div class="image-carousel">
+                                <div class="carousel-container">
+                                    <div class="carousel-wrapper" id="carouselWrapper">
+                                        <div class="carousel-slide">
+                                            <img src="https://i.pinimg.com/736x/ba/ed/0b/baed0bc9eb18a2cf234d52d595f2e7da.jpg" alt="B-Beauty Glow - Área de relaxamento">
+                                            <div class="slide-overlay">
+                                                <h4>Sua beleza, nosso compromisso.</h4>
+                                                <p>Momento de tranquilidade e bem-estar</p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-slide active">
+                                            <img src="https://i.pinimg.com/736x/b4/e5/4b/b4e54b9fdab73ebba45d4b7a7c59fece.jpg" alt="Ambiente B-Beauty Glow - Sala de tratamento">
+                                            <div class="slide-overlay">
+                                                <h4>Limpeza de Pele</h4>
+                                                <p>Fale com a gente</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="carousel-slide">
+                                            <img src="https://i.pinimg.com/736x/1a/9b/3c/1a9b3cf7d4c518ef3e37df7f6d5852f0.jpg" alt="B-Beauty Glow - Sala de massagem">
+                                            <div class="slide-overlay">
+                                                <h4>Cuide de você</h4>
+                                                <p>Seu corpo é o maior desouro</p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-slide">
+                                            <img src="https://i.pinimg.com/736x/8e/30/1b/8e301b463b16671a3808042af01967c3.jpg" alt="B-Beauty Glow - Recepção">
+                                            <div class="slide-overlay">
+                                                <h4>Massagem Corporal</h4>
+                                                <p>Autocuidado você merece</p>
+                                            </div>
+                                        </div>
+                                        <div class="carousel-slide">
+                                            <img src="https://i.pinimg.com/736x/38/20/60/38206058d9c752e4219a2e8d2a98d156.jpg" alt="B-Beauty Glow - Recepção">
+                                            <div class="slide-overlay">
+                                                <h4>Ótima locaização</h4>
+                                                <p>Primeiro contato com a excelência</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Controles do Carrossel -->
+                                    <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <button class="carousel-btn next-btn" onclick="changeSlide(1)">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                    
+                                    <!-- Indicadores corrigidos -->
+                                    <div class="carousel-indicators">
+                                        <span class="indicator active" onclick="currentSlide(1)"></span>
+                                        <span class="indicator" onclick="currentSlide(2)"></span>
+                                        <span class="indicator" onclick="currentSlide(3)"></span>
+                                        <span class="indicator" onclick="currentSlide(4)"></span>
+                                        <span class="indicator" onclick="currentSlide(5)"></span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Informações do Carrossel -->
+                                <div class="carousel-info">
+                                    <h4>
+                                        <i class="fas fa-camera"></i>
+                                        Conheça nossos ambientes
+                                    </h4>
+                                    <p>Cada espaço foi cuidadosamente projetado para proporcionar uma experiência única de beleza e bem-estar no coração do Lago Sul.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Botão para direções -->
                     <div class="social-links">
-                        <a href="https://instagram.com/b_beautyglowclinica" target="_blank">
+                        <a href="https://instagram.com/b_beautyglowclinica" target="_blank" title="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://wa.me/5561934567801" target="_blank">
+                        <a href="https://wa.me/5561995525150" target="_blank" title="WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -901,9 +1418,105 @@
         </div>
     </section>
 
-    <footer>
+    <section id="contato" class="contact">
         <div class="container">
+            <h2 class="section-title">Contato</h2>
+            <div class="contact-layout">
+            
+                <!-- Seção de Localização e Contato -->
+                <div class="location-contact-section">
+                <!-- Localização com Mapa -->
+                <div class="location-box">
+                    <div class="location-header">
+                        <h3>
+                            <i class="fas fa-map-marker-alt"></i>
+                            Nossa Localização
+                        </h3>
+                        <p>ST. De Habitações Individuais Sul, Lago Sul - DF</p>
+                    </div>
+                    
+                    <div class="map-container">
+                        <iframe 
+                            class="map-frame"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15356.942637569382!2d-47.85480095!3d-15.82674615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a2dcad7ae7935%3A0x27498a31bcc467e5!2sLago%20Sul%2C%20Bras%C3%ADlia%20-%20DF!5e0!3m2!1spt-BR!2sbr!4v1642085432123"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Localização B-Beauty Glow - Lago Sul, Brasília">
+                        </iframe>
+                    </div>
+                    
+                    <a href="https://www.google.com/maps/dir//Lago+Sul,+Brasília+-+DF" target="_blank" class="directions-button">
+                        <i class="fas fa-route"></i>
+                        Como chegar
+                    </a>
+                </div>
+
+                    <!-- Informações de Contato -->
+                    <div class="contact-info-box">
+                        <h3>
+                            <i class="fas fa-phone-alt"></i>
+                            Fale Conosco
+                        </h3>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <div class="contact-item-content">
+                                    <strong>WhatsApp</strong>
+                                    <a href="https://wa.me/5561995525150" class="contact-link" target="_blank">(61) 99552-5150</a>
+                                    <small>Atendimento personalizado</small>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div class="contact-item-content">
+                                    <strong>Telefone</strong>
+                                    <a href="tel:+55613456-7801" class="contact-link">(61) 3456-7801 </a>
+                                    <small>Horário comercial</small>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div class="contact-item-content">
+                                    <strong>E-mail</strong>
+                                    <a href="mailto:clinica@bbeautyglow.com.br" class="contact-link">clinica@bbeautyglow.com.br</a>
+                                    <small>Resposta em até 24h</small>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <div class="contact-item-content">
+                                    <strong>Horário de funcionamento</strong>
+                                    <div style="margin-top: 5px;">
+                                        Segunda a Sexta: 8h às 18h<br>
+                                        Sábado: 8h às 16h<br>
+                                        Domingo: Fechado
+                                    </div>
+                                    <small>Agendamento necessário</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        
+        
+        <div class="container">
+            
             <p>&copy; 2025 B-Beauty Glow. Todos os direitos reservados. | Cuidados e bem-estar exclusivo no Lago Sul</p>
+            <p> Desenvolvido por jeffesonbrito.com.br. | </p>
         </div>
     </footer>
 
@@ -1261,6 +1874,315 @@ _Mensagem enviada através do site B-Beauty Glow_`;
             // const tooltip = document.getElementById('chatTooltip');
             // tooltip.classList.add('hidden');
         });
+
+        // Carousel functionality - Versão melhorada
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
+        let autoPlayInterval;
+        let isAutoPlaying = true;
+        let isPaused = false; // Nova variável para controle de pausa
+
+        // Initialize carousel
+        function initCarousel() {
+            if (slides.length === 0) return;
+            
+            updateCarousel();
+            startAutoPlay();
+            
+            // Add touch event listeners for mobile
+            addTouchEventListeners();
+            
+            // Pause auto-play quando mouse estiver sobre qualquer parte do carrossel
+            const carouselContainer = document.querySelector('.carousel-container');
+            const imageCarousel = document.querySelector('.image-carousel');
+            
+            if (carouselContainer && imageCarousel) {
+                // Pausar quando mouse entrar na área do carrossel completo
+                imageCarousel.addEventListener('mouseenter', function() {
+                    pauseAutoPlay();
+                    isPaused = true;
+                    console.log('Carrossel pausado - mouse sobre a área');
+                });
+                
+                // Retomar quando mouse sair da área do carrossel completo
+                imageCarousel.addEventListener('mouseleave', function() {
+                    isPaused = false;
+                    if (isAutoPlaying) {
+                        startAutoPlay();
+                        console.log('Carrossel retomado - mouse saiu da área');
+                    }
+                });
+                
+                // Pausar especificamente quando mouse estiver sobre as imagens
+                slides.forEach((slide, index) => {
+                    const img = slide.querySelector('img');
+                    if (img) {
+                        img.addEventListener('mouseenter', function() {
+                            pauseAutoPlay();
+                            isPaused = true;
+                            console.log(`Pausado na imagem ${index + 1}`);
+                        });
+                        
+                        img.addEventListener('mouseleave', function() {
+                            // Só retomar se o mouse não estiver mais sobre o carrossel
+                            setTimeout(() => {
+                                if (!imageCarousel.matches(':hover')) {
+                                    isPaused = false;
+                                    if (isAutoPlaying) {
+                                        startAutoPlay();
+                                        console.log(`Retomado da imagem ${index + 1}`);
+                                    }
+                                }
+                            }, 100);
+                        });
+                    }
+                });
+            }
+        }
+
+        // Change slide function - Sempre em ordem sequencial
+        function changeSlide(direction) {
+            // Garantir que sempre avance em ordem (1 -> 2 -> 3 -> 4 -> 5 -> 1)
+            if (direction > 0) {
+                currentSlideIndex++;
+                if (currentSlideIndex >= totalSlides) {
+                    currentSlideIndex = 0; // Volta para o primeiro
+                }
+            } else {
+                currentSlideIndex--;
+                if (currentSlideIndex < 0) {
+                    currentSlideIndex = totalSlides - 1; // Vai para o último
+                }
+            }
+            
+            updateCarousel();
+            resetAutoPlay();
+            
+            console.log(`Slide mudou para: ${currentSlideIndex + 1}/${totalSlides}`);
+        }
+
+        // Go to specific slide
+        function currentSlide(slideIndex) {
+            currentSlideIndex = slideIndex - 1;
+            updateCarousel();
+            resetAutoPlay();
+            
+            console.log(`Slide específico selecionado: ${slideIndex}`);
+        }
+
+        // Update carousel display
+        function updateCarousel() {
+            const wrapper = document.getElementById('carouselWrapper');
+            if (!wrapper) return;
+            
+            // Move carousel com transição suave
+            wrapper.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            
+            // Update active slide
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlideIndex);
+            });
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlideIndex);
+            });
+            
+            // Atualizar contadores de debug
+            console.log(`Carrossel atualizado - Slide ativo: ${currentSlideIndex + 1}`);
+        }
+
+        // Auto-play functionality melhorada
+        function startAutoPlay() {
+            // Não iniciar se estiver pausado pelo mouse
+            if (isPaused || !isAutoPlaying) return;
+            
+            // Limpar intervalo anterior se existir
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+            }
+            
+            autoPlayInterval = setInterval(() => {
+                // Verificar novamente se não está pausado
+                if (!isPaused && isAutoPlaying) {
+                    changeSlide(1); // Sempre avançar para frente
+                    console.log('Auto-play: avançando slide');
+                }
+            }, 5000); // Change slide every 5 seconds
+            
+            console.log('Auto-play iniciado');
+        }
+
+        function pauseAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+            }
+            console.log('Auto-play pausado');
+        }
+
+        function resetAutoPlay() {
+            pauseAutoPlay();
+            // Só reiniciar se não estiver pausado pelo mouse
+            if (isAutoPlaying && !isPaused) {
+                setTimeout(() => {
+                    startAutoPlay();
+                }, 500); // Pequeno delay para suavizar a transição
+            }
+        }
+
+        // Touch events for mobile swipe - Melhorados
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        function addTouchEventListeners() {
+            const carouselContainer = document.querySelector('.carousel-container');
+            if (!carouselContainer) return;
+
+            carouselContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+            carouselContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
+            
+            // Pausar auto-play durante o toque
+            carouselContainer.addEventListener('touchstart', function() {
+                pauseAutoPlay();
+                isPaused = true;
+            });
+            
+            carouselContainer.addEventListener('touchend', function() {
+                isPaused = false;
+                resetAutoPlay();
+            });
+        }
+
+        function handleTouchStart(event) {
+            touchStartX = event.touches[0].clientX;
+            touchStartY = event.touches[0].clientY;
+        }
+
+        function handleTouchEnd(event) {
+            touchEndX = event.changedTouches[0].clientX;
+            touchEndY = event.changedTouches[0].clientY;
+            handleSwipe();
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const swipeDistanceX = touchEndX - touchStartX;
+            const swipeDistanceY = Math.abs(touchEndY - touchStartY);
+            
+            // Só processar swipe horizontal se não for muito vertical
+            if (swipeDistanceY < 100 && Math.abs(swipeDistanceX) > swipeThreshold) {
+                if (swipeDistanceX > 0) {
+                    // Swipe right - previous slide
+                    changeSlide(-1);
+                } else {
+                    // Swipe left - next slide
+                    changeSlide(1);
+                }
+            }
+        }
+
+        // Image loading with fallback
+        function handleImageError(img) {
+            const slide = img.closest('.carousel-slide');
+            if (slide) {
+                slide.classList.add('loading');
+                img.style.display = 'none';
+                
+                console.log('Erro ao carregar imagem, tentando fallback...');
+                
+                // Try to load a fallback image
+                setTimeout(() => {
+                    img.src = 'https://i.pinimg.com/736x/ab/1a/e5/ab1ae57f1038d96cf8c5adea7050004e.jpg';
+                    img.style.display = 'block';
+                    slide.classList.remove('loading');
+                }, 1000);
+            }
+        }
+
+        // Add error handling to images
+        function addImageErrorHandling() {
+            const carouselImages = document.querySelectorAll('.carousel-slide img');
+            carouselImages.forEach((img, index) => {
+                img.addEventListener('error', () => handleImageError(img));
+                img.addEventListener('load', () => {
+                    const slide = img.closest('.carousel-slide');
+                    if (slide) {
+                        slide.classList.remove('loading');
+                    }
+                    console.log(`Imagem ${index + 1} carregada com sucesso`);
+                });
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Inicializando carrossel...');
+            
+            // Initialize carousel
+            initCarousel();
+            addImageErrorHandling();
+            
+            // Keyboard navigation melhorada
+            document.addEventListener('keydown', function(event) {
+                // Só processar se o carrossel estiver visível
+                const carouselContainer = document.querySelector('.carousel-container');
+                if (!carouselContainer) return;
+                
+                if (event.key === 'ArrowLeft') {
+                    event.preventDefault();
+                    changeSlide(-1);
+                } else if (event.key === 'ArrowRight') {
+                    event.preventDefault();
+                    changeSlide(1);
+                } else if (event.key === ' ') {
+                    // Barra de espaço para pausar/retomar
+                    event.preventDefault();
+                    if (isAutoPlaying) {
+                        isAutoPlaying = false;
+                        pauseAutoPlay();
+                        console.log('Auto-play pausado via teclado');
+                    } else {
+                        isAutoPlaying = true;
+                        isPaused = false;
+                        startAutoPlay();
+                        console.log('Auto-play retomado via teclado');
+                    }
+                }
+            });
+            
+            console.log(`Carrossel inicializado com ${totalSlides} slides`);
+        });
+
+        // Pause auto-play when page is not visible
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                isAutoPlaying = false;
+                pauseAutoPlay();
+                console.log('Página não visível - auto-play pausado');
+            } else {
+                isAutoPlaying = true;
+                if (!isPaused) {
+                    startAutoPlay();
+                    console.log('Página visível - auto-play retomado');
+                }
+            }
+        });
+
+        // Controles de debug (remover em produção)
+        window.carouselDebug = {
+            getCurrentSlide: () => currentSlideIndex + 1,
+            getTotalSlides: () => totalSlides,
+            isPlaying: () => isAutoPlaying,
+            isPaused: () => isPaused,
+            forceNext: () => changeSlide(1),
+            forcePrevious: () => changeSlide(-1),
+            forceSlide: (index) => currentSlide(index)
+        };
     </script>
 </body>
 </html>
