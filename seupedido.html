@@ -532,13 +532,13 @@
     </head>
     <body>
         <div class="container">
-            <a href="{% url 'presente' %}" class="back-button">
+            <a href="presente.html" class="back-button">
                 <i class="fas fa-arrow-left"></i>
                 Voltar
             </a>
 
             <div class="header">
-                <a href="{% url 'home' %}" class="logo">
+                <a href="index.html" class="logo">
                     <i class="fas fa-spa"></i>
                     <span>B-Beauty Glow</span>
                 </a>
@@ -648,7 +648,7 @@
                 const storedData = localStorage.getItem('giftCardOrder');
                 if (!storedData) {
                     // Redirect back if no order data
-                    window.location.href = '{% url "presente" %}';
+                    window.location.href = 'presente.html';
                     return;
                 }
 
@@ -816,7 +816,7 @@
 
                 // Redirect to home after 5 seconds
                 setTimeout(() => {
-                    window.location.href = '{% url "home" %}';
+                    window.location.href = 'index.html';
                 }, 5000);
             }
 
