@@ -28,7 +28,8 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #F4E6D8 0%, #E8D5C4 100%);
+            background: linear-gradient(135deg, #4C4015 0%, #4C4015 100%);/* cor:  Verde*/
+            /*background: linear-gradient(135deg, #F4E6D8 0%, #E8D5C4 100%);* cor: Rose*/
             padding: 1rem 0;
             box-shadow: 0 2px 10px rgba(139, 115, 85, 0.1);
             position: fixed;
@@ -171,8 +172,8 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(244, 230, 216, 0.9), rgba(232, 213, 196, 0.9)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23F4E6D8" width="1200" height="600"/><circle cx="200" cy="150" r="80" fill="%23E8A87C" opacity="0.1"/><circle cx="1000" cy="400" r="120" fill="%23D4A574" opacity="0.1"/><rect x="0" y="500" width="1200" height="100" fill="%23E8D5C4"/></svg>');
+            background: linear-gradient(135deg, rgba(244, 230, 216, 0.85), rgba(232, 213, 196, 0.85)),
+                        url('https://i.pinimg.com/736x/2e/3d/62/2e3d62df4ce7d02afa8a545894d459a5.jpg'); /* imagem no section home que fica por tras */
             height: 100vh;
             display: flex;
             align-items: center;
@@ -647,6 +648,114 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* Melhorias de responsividade para telas menores */
+@media (max-width: 600px) {
+    .container {
+        padding: 0 8px;
+    }
+
+    header {
+        padding: 0.5rem 0;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        gap: 5px;
+    }
+
+    .logo i {
+        font-size: 1.5rem;
+    }
+
+    .nav-menu {
+        gap: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .hero-content {
+        padding: 0 5px;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .cta-button,
+    .gift-button,
+    .directions-button {
+        font-size: 0.95rem;
+        padding: 10px 15px;
+        border-radius: 20px;
+    }
+
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .about-image {
+        height: 180px;
+        font-size: 2rem;
+    }
+
+    .services-grid,
+    .packages-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .service-card,
+    .package-card {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .carousel-container {
+        height: 160px;
+    }
+
+    .carousel-info {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .contact-form {
+        padding: 1rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 0.95rem;
+        padding: 8px;
+    }
+
+    .contact-details {
+        gap: 8px;
+    }
+
+    .contact-item {
+        padding: 8px;
+        font-size: 0.95rem;
+    }
+
+    .social-links a {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    footer {
+        padding: 1rem 0;
+        font-size: 0.95rem;
+    }
+}
 
         /* Footer */
         footer {
@@ -1132,7 +1241,7 @@
 <body>
     <header>
         <nav class="container">
-            <a href="index.html" class="logo">
+            <a href="{% url 'home' %}" class="logo">
                 <i class="fas fa-spa"></i>
                 <span>B-Beauty Glow</span>
             </a>
@@ -1144,7 +1253,7 @@
                 <li><a href="#agendamento">Agendamento</a></li>
                 <li><a href="#contato">Contato</a></li>
                 <li>
-                    <a href="presente.html" class="gift-button">
+                    <a href="{% url 'presente' %}" class="gift-button">
                         <i class="fas fa-gift"></i>
                         <span>Compre um Presente</span>
                     </a>
@@ -1242,7 +1351,7 @@
                             <li>Drenagem linfática</li>
                         </ul>
                     </div>
-                    <a href="#contato" class="cta-button">Saiba mais</a>
+                    <a href="#" class="cta-button saiba-mais-btn" data-pacote="Debutante">Saiba mais</a>
                 </div>
                 
                 <div class="package-card">
@@ -1263,7 +1372,7 @@
                             <li>Drenagem modeladora</li>
                         </ul>
                     </div>
-                    <a href="#contato" class="cta-button">Saiba mais</a>
+                    <a href="#" class="cta-button saiba-mais-btn" data-pacote="Noiva">Saiba mais</a>
                 </div>
                 
                 <div class="package-card">
@@ -1284,7 +1393,7 @@
                             <li>Podologia especializada</li>
                         </ul>
                     </div>
-                    <a href="#contato" class="cta-button">Saiba mais</a>
+                    <a href="#" class="cta-button saiba-mais-btn" data-pacote="Noivo">Saiba mais</a>
                 </div>
             </div>
         </div>
@@ -1409,7 +1518,7 @@
                         <a href="https://instagram.com/b_beautyglowclinica" target="_blank" title="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://wa.me/5561995525150" target="_blank" title="WhatsApp">
+                        <a href="https://wa.me/556198301073" target="_blank" title="WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -1446,7 +1555,7 @@
                         </iframe>
                     </div>
                     
-                    <a href="https://www.google.com/maps/dir//Lago+Sul,+Brasília+-+DF" target="_blank" class="directions-button">
+                    <a href="https://www.google.com/maps/search/?api=1&query=ST.+De+Habitações+Individuais+Sul,+Lago+Sul" target="_blank" class="directions-button">
                         <i class="fas fa-route"></i>
                         Como chegar
                     </a>
@@ -1464,7 +1573,7 @@
                                 <i class="fab fa-whatsapp"></i>
                                 <div class="contact-item-content">
                                     <strong>WhatsApp</strong>
-                                    <a href="https://wa.me/5561995525150" class="contact-link" target="_blank">(61) 99552-5150</a>
+                                    <a href="https://wa.me/556198301073" class="contact-link" target="_blank">(61) 98301-073</a>
                                     <small>Atendimento personalizado</small>
                                 </div>
                             </div>
@@ -1721,7 +1830,7 @@
         
         // Integração com WhatsApp - Formatação bonita
         function redirectToWhatsApp(data) {
-            const phone = '5561995525150'; // Número atualizado
+            const phone = '556198301073'; // Novo número
             
             // Formatação bonita da data
             let dataFormatada = 'Não especificada';
@@ -1759,41 +1868,39 @@ Olá! Gostaria de agendar uma visita para cuidar da minha beleza e bem-estar! �
 
 💖 Estou ansiosa(o) para conhecer a clínica e desfrutar dos cuidados exclusivos no Lago Sul!
 
-_Enviado através do site B-Beauty Glow_`;
-            
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
-            
-            // Abrir WhatsApp
-            window.open(whatsappUrl, '_blank');
-        }
-        
-        // Máscara para telefone - formato (99)874561230
-        document.getElementById('telefone').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            
-            // Limitar a 11 dígitos
-            if (value.length > 11) {
-                value = value.slice(0, 11);
-            }
-            
-            // Aplicar formatação
-            if (value.length >= 11) {
-                // Celular com 11 dígitos: (99)99999-9999
-                value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1)$2$3');
-            } else if (value.length >= 10) {
-                // Fixo com 10 dígitos: (99)9999-9999
-                value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1)$2$3');
-            } else if (value.length >= 6) {
-                // Formatação parcial
-                value = value.replace(/(\d{2})(\d*)/, '($1)$2');
-            } else if (value.length >= 2) {
-                // Apenas DDD
-                value = value.replace(/(\d{2})/, '($1)');
-            }
-            
-            e.target.value = value;
-        });
+_Enviado através do site B-Beauty Glow`;
+    
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+// Máscara para telefone - formato (99)874561230
+document.getElementById('telefone').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    
+    // Limitar a 11 dígitos
+    if (value.length > 11) {
+        value = value.slice(0, 11);
+    }
+    
+    // Aplicar formatação
+    if (value.length >= 11) {
+        // Celular com 11 dígitos: (99)99999-9999
+        value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1)$2$3');
+    } else if (value.length >= 10) {
+        // Fixo com 10 dígitos: (99)9999-9999
+        value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1)$2$3');
+    } else if (value.length >= 6) {
+        // Formatação parcial
+        value = value.replace(/(\d{2})(\d*)/, '($1)$2');
+    } else if (value.length >= 2) {
+        // Apenas DDD
+        value = value.replace(/(\d{2})/, '($1)');
+    }
+    
+    e.target.value = value;
+});
 
         // Add scroll effect to header
         let lastScroll = 0;
@@ -1812,7 +1919,7 @@ _Enviado através do site B-Beauty Glow_`;
 
         // WhatsApp Chat Function
         function openWhatsAppChat() {
-            const phone = '5561995525150';
+            const phone = '556198301073'; // Novo número
             const message = `🌸 *Olá B-Beauty Glow!* 🌸
 
 Vim através do site e gostaria de conversar com um atendente! 💬
@@ -1830,8 +1937,6 @@ _Mensagem enviada através do site B-Beauty Glow_`;
 
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
-            
-            // Open WhatsApp
             window.open(whatsappUrl, '_blank');
             
             // Remove notification after click
@@ -2167,6 +2272,7 @@ _Mensagem enviada através do site B-Beauty Glow_`;
             } else {
                 isAutoPlaying = true;
                 if (!isPaused) {
+
                     startAutoPlay();
                     console.log('Página visível - auto-play retomado');
                 }
@@ -2183,6 +2289,30 @@ _Mensagem enviada através do site B-Beauty Glow_`;
             forcePrevious: () => changeSlide(-1),
             forceSlide: (index) => currentSlide(index)
         };
+
+        // Botão "Saiba mais" dos pacotes direciona para WhatsApp
+        document.querySelectorAll('.saiba-mais-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pacote = btn.getAttribute('data-pacote');
+                const phone = '556198301073'; // Novo número
+                const message = `🌸 *B-Beauty Glow* 🌸
+
+Olá! Gostaria de saber mais sobre o *Pacote ${pacote}*.
+
+Estou interessado(a) nos benefícios, valores e detalhes desse pacote especial.
+
+Aguardo seu retorno para conhecer todas as vantagens e agendar minha experiência!
+
+✨ Obrigado(a)! ✨
+
+_Mensagem enviada através do site B-Beauty Glow_`;
+
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
+                window.open(whatsappUrl, '_blank');
+            });
+        });
     </script>
 </body>
 </html>
